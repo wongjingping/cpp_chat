@@ -1,13 +1,14 @@
 #ifndef CHAT_COMMON_H
 #define CHAT_COMMON_H
 
-#include <iostream>
-#include <cstring>
-#include <sys/socket.h>
 #include <arpa/inet.h>
-#include <unistd.h>
 #include <chrono>
+#include <cstring>
+#include <functional>
+#include <iostream>
+#include <sys/socket.h>
 #include <thread>
+#include <unistd.h>
 
 typedef std::chrono::high_resolution_clock::time_point time_point_t;
 
