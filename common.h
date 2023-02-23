@@ -15,7 +15,6 @@ typedef std::chrono::high_resolution_clock::time_point time_point_t;
 // common variables used by both server/client
 const int PORT = 8888;
 const int BUF_SIZE = 16;
-const int MSG_LEN = BUF_SIZE; // length used by special messages
 extern const char* START_MSG;
 extern const char* END_MSG;
 extern const char* ACK_MSG;

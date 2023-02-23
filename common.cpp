@@ -40,7 +40,7 @@ void Chat::send_msg(const char *msg, size_t len, bool verbose)
     // Send the message in chunks of fixed size
     int total_sent = 0;
     int sent = 0;
-    int start_bytes = ::send(sock_fd, START_MSG, MSG_LEN, 0);
+    int start_bytes = ::send(sock_fd, START_MSG, BUF_SIZE, 0);
     if (start_bytes == -1)
     {
         std::cerr << "Failed to send START_MSG." << std::endl;
@@ -57,7 +57,7 @@ void Chat::send_msg(const char *msg, size_t len, bool verbose)
         }
         total_sent += sent;
     }
-    int end_bytes = ::send(sock_fd, END_MSG, MSG_LEN, 0);
+    int end_bytes = ::send(sock_fd, END_MSG, BUF_SIZE, 0);
     if (end_bytes == -1)
     {
         std::cerr << "Failed to send END_MSG." << std::endl;
@@ -133,7 +133,7 @@ void Chat::receive_msg()
         else if (std::memcmp(END_MSG, rcv_buf, 1) == 0)
         { // rcv sends ack when end reached
             std::cout << "\n--end of message--" << std::endl;
-            int nbytes = ::send(sock_fd, ACK_MSG, MSG_LEN, 0);
+            int nbytes = ::send(sock_fd, ACK_MSG, BUF_SIZE, 0);
         }
         else if (std::memcmp(ACK_MSG, rcv_buf, 1) == 0)
         {
